@@ -1,0 +1,34 @@
+info:
+  description: near homophone words
+  title: soundslike
+  version: 1.0.0
+paths: 
+  /phononym:
+    post:
+      summary: Find sounds like
+      description: Optional description
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              type: string
+      parameters:
+      - name: word
+        in: body
+        description: word to consider
+        required: true
+        schema:
+          type: object
+      operationId: ListWords
+
+produces:
+- application/json
+consumes:
+- application/json
+
+schemes:
+- http
+host: localhost:3000
+swagger: "2.0"
