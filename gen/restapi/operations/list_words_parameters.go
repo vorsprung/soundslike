@@ -15,7 +15,8 @@ import (
 )
 
 // NewListWordsParams creates a new ListWordsParams object
-// no default values defined in spec.
+//
+// There are no default values defined in the spec.
 func NewListWordsParams() ListWordsParams {
 
 	return ListWordsParams{}
@@ -51,7 +52,7 @@ func (o *ListWordsParams) BindRequest(r *http.Request, route *middleware.Matched
 		var body interface{}
 		if err := route.Consumer.Consume(r.Body, &body); err != nil {
 			if err == io.EOF {
-				res = append(res, errors.Required("word", "body"))
+				res = append(res, errors.Required("word", "body", ""))
 			} else {
 				res = append(res, errors.NewParseError("word", "body", "", err))
 			}
@@ -60,7 +61,7 @@ func (o *ListWordsParams) BindRequest(r *http.Request, route *middleware.Matched
 			o.Word = body
 		}
 	} else {
-		res = append(res, errors.Required("word", "body"))
+		res = append(res, errors.Required("word", "body", ""))
 	}
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

@@ -6,8 +6,9 @@ import (
 	"log"
 	"os"
 
-	loads "github.com/go-openapi/loads"
+	"github.com/go-openapi/loads"
 	flags "github.com/jessevdk/go-flags"
+
 	"github.com/vorsprung/soundslike/gen/restapi"
 	"github.com/vorsprung/soundslike/gen/restapi/operations"
 )
@@ -29,7 +30,6 @@ func main() {
 	parser := flags.NewParser(server, flags.Default)
 	parser.ShortDescription = "soundslike"
 	parser.LongDescription = "near homophone words"
-
 	server.ConfigureFlags()
 	for _, optsGroup := range api.CommandLineOptionsGroups {
 		_, err := parser.AddGroup(optsGroup.ShortDescription, optsGroup.LongDescription, optsGroup.Options)

@@ -8,7 +8,7 @@ package operations
 import (
 	"net/http"
 
-	middleware "github.com/go-openapi/runtime/middleware"
+	"github.com/go-openapi/runtime/middleware"
 )
 
 // ListWordsHandlerFunc turns a function with the right signature into a list words handler
@@ -29,7 +29,7 @@ func NewListWords(ctx *middleware.Context, handler ListWordsHandler) *ListWords 
 	return &ListWords{Context: ctx, Handler: handler}
 }
 
-/*ListWords swagger:route POST /phononym listWords
+/* ListWords swagger:route POST /phononym listWords
 
 Find sounds like
 
@@ -44,17 +44,15 @@ type ListWords struct {
 func (o *ListWords) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	route, rCtx, _ := o.Context.RouteInfo(r)
 	if rCtx != nil {
-		r = rCtx
+		*r = *rCtx
 	}
 	var Params = NewListWordsParams()
-
 	if err := o.Context.BindValidRequest(r, route, &Params); err != nil { // bind params
 		o.Context.Respond(rw, r, route.Produces, route, err)
 		return
 	}
 
 	res := o.Handler.Handle(Params) // actually handle the request
-
 	o.Context.Respond(rw, r, route.Produces, route, res)
 
 }
