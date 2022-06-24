@@ -11,9 +11,10 @@ require (
 	github.com/go-openapi/strfmt v0.21.2
 	github.com/go-openapi/swag v0.21.1
 	github.com/jessevdk/go-flags v1.4.0
-	github.com/rs/cors v1.7.0
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
 )
 
 replace github.com/vorsprung/soundslike => ./
+
+replace github.com/vorsprung/strfmt v0.21.2 => github.com/vorsprung/strfmt v0.21.3-0.20220624084400-6899f8befc19
