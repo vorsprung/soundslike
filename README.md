@@ -10,5 +10,10 @@
 
 # Client
 
+send this
+
     curl --header "Content-Type: application/json" -XPOST -d '{ "word": "shoeshop"} ' http://localhost:3000/phononym
+
+and the response is
+
     ["chichipe","shoeshop","showshop"]
